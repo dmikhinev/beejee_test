@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add task{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Add task</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.txt) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

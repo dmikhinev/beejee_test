@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <h1>Tasks <a href="{{ path('task_add') }}">+</a></h1>
+        <table>
+            {% if list.getTotalItemCount > 0 %}
+                <tr>
+                    <th>{{ knp_pagination_sortable(list, 'Name', 't.name') }}</th>
+                    <th>{{ knp_pagination_sortable(list, 'Email', 't.email') }}</th>
+                    <th>{{ knp_pagination_sortable(list, 'Task', 't.txt') }}</th>
+                </tr>
+            {% endif %}
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.txt }}</td>
+                </tr>
+            {% else %}
+                <tr><td>Tasks not found.</td></tr>
+            {% endfor %}
+        </table>
+        <div class="navigation">
+            {{ knp_pagination_render(list) }}
+        </div>
+    </div>
+{% endblock %}
